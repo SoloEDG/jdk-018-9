@@ -13,6 +13,7 @@ export function useSource() {
       const asset = await decodeImage(url, name);
       if (id !== ticket) return;
       doc.asset = asset;
+      doc.capture = null;
       doc.crop = { x: 0, y: 0, width: 1, height: 1 };
       invalidate();
       notice.value = "图片已载入";

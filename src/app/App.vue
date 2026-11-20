@@ -6,6 +6,7 @@ import { CropPanel } from "../features/crop";
 import { MappingPanel } from "../features/mapping";
 import { PreviewPanel } from "../features/preview";
 import { ExportPanel } from "../features/export";
+import { CaptureStation } from "../features/capture";
 const w = useWorkspace();
 </script>
 <template>
@@ -40,5 +41,6 @@ const w = useWorkspace();
       <span role="status">{{ w.notice.value }}</span
       ><span>CRAFTED IN CHARACTERS <b>✳</b></span>
     </footer>
+    <CaptureStation v-if="w.stationOpen.value" @close="w.stationOpen.value = false" />
   </div>
 </template>

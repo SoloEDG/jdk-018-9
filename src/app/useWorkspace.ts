@@ -5,7 +5,8 @@ import { generate } from "../features/mapping";
 export function useWorkspace() {
   const doc = reactive(createDocument());
   const busy = ref(false),
-    notice = ref("所有处理均在你的浏览器中完成");
+    notice = ref("所有处理均在你的浏览器中完成"),
+    stationOpen = ref(false);
   let timer: ReturnType<typeof setTimeout>;
   function invalidate() {
     doc.revision++;
@@ -22,6 +23,6 @@ export function useWorkspace() {
     }, 60);
   }
   watch(() => doc.settings.background, invalidate);
-  provide(studioKey, { doc, busy, notice, invalidate });
-  return { doc, busy, notice };
+  provide(studioKey, { doc, busy, notice, stationOpen, invalidate });
+  return { doc, busy, notice, stationOpen };
 }

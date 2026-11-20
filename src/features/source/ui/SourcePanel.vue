@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
-import { ImagePlus, Mountain } from "lucide-vue-next";
+import { Aperture, ImagePlus, Mountain } from "lucide-vue-next";
 import { useSource } from "../model/useSource";
+import { useStudio } from "../../../shared/useStudio";
 const s = useSource();
+const { stationOpen } = useStudio();
 onMounted(() => s.demo());
 function change(e: Event) {
   s.file((e.target as HTMLInputElement).files?.[0]);
@@ -28,6 +30,9 @@ function change(e: Event) {
         @change="change" /></label
     ><button class="demo" @click="s.demo">
       <Mountain :size="14" /> 使用山脉示例 <span>↗</span>
+    </button>
+    <button class="demo" @click="stationOpen = true">
+      <Aperture :size="14" /> 多机位采集台 <span>↗</span>
     </button>
     <div v-if="s.doc.asset" class="file-info">
       <span>{{ s.doc.asset.name }}</span

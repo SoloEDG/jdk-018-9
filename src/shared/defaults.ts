@@ -14,6 +14,7 @@ export function createDocument(): StudioDocument {
       background: "#101216",
     },
     grid: null,
+    capture: null,
     revision: 0,
   };
 }
